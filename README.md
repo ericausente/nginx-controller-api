@@ -4,7 +4,7 @@ Configure a load balancer via REST API from NGINX Controller
 You can access the NGINX Controller from other hosts via REST API by using the username and the password specified in the install script.
 
 ```
-# curl -ik --location --request POST 'https://controller.eric.com/api/v1/platform/login' --header 'Content-Type: application/json' --data-raw '{ "credentials": { "type": "BASIC", "username": "<username>", "password": "<password>" }}'
+# curl -ik --location --request POST 'https://<Controller IP or Hostname>/api/v1/platform/login' --header 'Content-Type: application/json' -d '{ "credentials": { "type": "BASIC", "username": "<username>", "password": "<password>" }}'
 HTTP/1.1 204 No Content
 Server: nginx/1.17.6
 Date: Wed, 25 Nov 2020 03:28:42 GMT
@@ -26,7 +26,7 @@ You can save the session value and test if you can get the list of running insta
 
 Check if the below instance retrieval is working:
 ```
-# curl -sk --location --request GET 'https://10.200.161.6/api/v1/infrastructure/locations/unspecified/instances' --header 'Content-Type: application/json' --header "Cookie: session=${session}" --data-raw '' | jq 
+# curl -sk --location --request GET 'https://10.201.10.146/api/v1/infrastructure/locations/unspecified/instances' --header 'Content-Type: application/json' --header "Cookie: session=${session}" -d '' | jq 
 ```
 
 Creating Environment
